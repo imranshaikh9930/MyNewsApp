@@ -74,7 +74,7 @@ const getData = useCallback(async () => {
       <main className="text-white w-[100%] flex flex-wrap justify-center items-center sm:gap-4 sm:my-28 mx-auto overflow-hidden">
         <Categories handleCategory={handleCategory} />
         {loading && postPerPage > 0 ? <Loader /> : <>
-          {/* <NewsCard postPerPages={postPerPages} /> */}
+          <NewsCard postPerPages={postPerPages} />
           <Pagination  postPerPages={postPerPages} currentPage={currentPage} setCurrentPage={setCurrentPage} pageCount={pageCount} className="flex justify-center items-center" />
         </>}
       

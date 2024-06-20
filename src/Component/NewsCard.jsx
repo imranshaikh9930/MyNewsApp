@@ -1,40 +1,37 @@
 /* eslint-disable react/prop-types */
-import {useEffect}from "react";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import image from "../assets/news.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilteredArticles } from "./redux/filterArticles";
-import toast from "react-hot-toast"
+import toast from "react-hot-toast";
 import Loader from "./Loader";
 import { MdOutlineSaveAlt } from "react-icons/md";
 
 const NewsCard = ({ postPerPages }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const filter = useSelector((state) => state.articleFilter.filter).toLowerCase();
 
   const filteredArticles = postPerPages
     ? postPerPages.filter((article) => article.title.toLowerCase().includes(filter))
     : [];
-    useEffect(()=>{
 
-      dispatch(setFilteredArticles(filteredArticles.length));
-    },[dispatch])
+  useEffect(() => {
+    dispatch(setFilteredArticles(filteredArticles.length));
+  }, [dispatch, filteredArticles]);
 
-  const handlebookmark = (id) => {
-
-    toast.success('Favorites Added ');
+  const handleBookmark = (id) => {
+    toast.success('Favorites Added');
     const favoriteItems = JSON.parse(localStorage.getItem('favorites')) || [];
-  
-  
-    const existingIndex = postPerPages.findIndex(item => item.id === postPerPages[id]);
-    if (existingIndex === -1) {
-      favoriteItems.push(postPerPages[id]);
+    const article = postPerPages[id];
+
+    if (!favoriteItems.some(item => item.id === article.id)) {
+      favoriteItems.push(article);
       localStorage.setItem('favorites', JSON.stringify(favoriteItems));
     } else {
-  
       console.log('Item already exists in favorites');
     }
-  }
+  };
 
   return (
     <div className="flex flex-col items-center sm:flex-row sm:flex-wrap sm:justify-center sm:mx-auto sm:px-2 md:px-3 gap-6 w-[100%]">
@@ -63,41 +60,37 @@ const NewsCard = ({ postPerPages }) => {
                   : "Description Not Available"}
               </p>
               <div className="flex justify-between w-[100%]">
-              <NavLink
-                to={`/news/${news.title ? news.title : news.url}`}
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Read more
-                <svg
-                  className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
+                <NavLink
+                  to={`/news/${news.title ? news.title : news.url}`}
+                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </NavLink>
-              <button onClick={()=> handlebookmark(index)}  className="text-black text-xl">
-              <MdOutlineSaveAlt />
-              </button>
+                  Read more
+                  <svg
+                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 10"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M1 5h12m0 0L9 1m4 4L9 9"
+                    />
+                  </svg>
+                </NavLink>
+                <button onClick={() => handleBookmark(index)} className="text-black text-xl">
+                  <MdOutlineSaveAlt />
+                </button>
               </div>
-             
             </div>
           </div>
         ))
-      ) :      
-        <Loader/>
-      
-        
-    
-      }
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };
