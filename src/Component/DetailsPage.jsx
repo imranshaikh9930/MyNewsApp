@@ -28,7 +28,7 @@ const DetailsPage = () => {
   return (
     <>
       <div className="flex flex-col w-[80%] h-[50%] justify-center items-center mx-auto sm:mt-24 text-white">
-        {detailsPage  &&  (<>
+        {detailsPage ?  (<>
           <div className="w-[80%]">
             <h1 className="text-white w-[100%]">{detailsPage.title}</h1>
             <div className="w[70%]">
@@ -44,10 +44,10 @@ const DetailsPage = () => {
           </div>
        
         </>
+        ):(<div className="text-white">No Details Page Available</div>
         )
           
       }
-      <div className="text-white">{id.title}</div>
       </div>
     </>
   );

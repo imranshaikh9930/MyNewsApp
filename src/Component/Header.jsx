@@ -35,7 +35,8 @@ const Header = () => {
             
             onChange={handleChange}
           />
-          <button type="submit" className="bg-blue-500 py-2 px-3 rounded-lg w-[100%] sm:w-48 sm:py-2">
+          <button type="submit" className="bg-blue-500 py-2 px-3 rounded-lg w-[100%] sm:w-48 sm:py-27
+          ">
             Search
           </button>
         </form>
