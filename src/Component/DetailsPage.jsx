@@ -2,7 +2,7 @@
 import { useParams,useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import image from "../assets/news.jpeg"
-import { articleDetails } from "./redux/fetchSlice";
+import { setArticleDetails } from "./redux/fetchSlice";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -15,7 +15,7 @@ const DetailsPage = () => {
   const myArticle = articles.find((article) => article.title === id); // Assuming publishedAt is unique and used as id
   const detailsPage =  useSelector((state)=>state.article.articleDetails);
 
-  dispatch(articleDetails(myArticle));
+  dispatch(setArticleDetails(myArticle));
   
   
   const handleClick = (e) => {

@@ -5,9 +5,9 @@ const fetchSlice = createSlice({
   initialState: {
     articles: [],
     error: null,
-    status: 'idle',  // Initialize with a default status
+    status: 'idle', // Initialize with a default status
     search: "",
-    articleDetails:null
+    articleDetails: null
   },
   reducers: {
     fetchArticleStart: (state) => {
@@ -26,12 +26,19 @@ const fetchSlice = createSlice({
     searchValue: (state, action) => {
       state.search = action.payload;
     },
-    articleDetails:(state,action)=>{
+    setArticleDetails: (state, action) => { // Renamed to setArticleDetails for clarity
       state.articleDetails = action.payload;
     }
   },
 });
 
-export const { fetchArticleStart, fetchArticleSuccess, fetchArticleFailure, searchValue,articleDetails } = fetchSlice.actions;
+// Destructure and export the action creators
+export const {
+  fetchArticleStart,
+  fetchArticleSuccess,
+  fetchArticleFailure,
+  searchValue,
+  setArticleDetails
+} = fetchSlice.actions;
 
 export default fetchSlice.reducer;
