@@ -1,6 +1,9 @@
 
 // eslint-disable-next-line react/prop-types
 const Categories = ({ handleCategory }) => {
+
+  
+
   return (
     <div className="sm:w-[90%] sm:gap-4">
       <div className="hidden  sm:flex sm:justify-center gap-4 mx-auto  sm:w-[100%] sm:gap-4 sm:py-2">

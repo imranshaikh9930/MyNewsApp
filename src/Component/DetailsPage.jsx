@@ -27,24 +27,24 @@ const DetailsPage = () => {
   };
   return (
     <>
-      <div className="flex flex-col w-[80%] h-[50%] justify-center items-center mx-auto sm:mt-24 text-white">
+      <div className="flex flex-col w-[80%] h-[50%] mt-12 justify-center items-center mx-auto sm:mt-24 text-white">
         {detailsPage ?  (<>
           <div className="w-[80%]">
-            <h1 className="text-white w-[100%]">{detailsPage.title}</h1>
-            <div className="w[70%]">
+            <h1 className="text-white w-[100%] text-sm sm:text-md ">{detailsPage.title}</h1>
+            <div className="w[80%]">
               <img
-                className="w-[100%] h-80 object-contain"
+                className="w-[100%] h-40 my-3 sm:h-80 object-contain"
                 src={detailsPage.urlToImage ? detailsPage.urlToImage : image}
                 alt={detailsPage.title}
               />
             </div>
-            <p className="text-white">{detailsPage.content}</p>
-            <a className="text-white" onClick={handleClick} href={detailsPage.url}>Read More</a>
+            <p className="text-white text-left leading-6  sm:text-justify  text-sm sm:text-md ">{detailsPage.content}</p>
+            <a className="text-blue-600 underline" onClick={handleClick} href={detailsPage.url}>Read More</a>
            
           </div>
        
         </>
-        ):(<div className="text-white">No Details Page Available</div>
+        ):(<div className="text-white text-sm sm:text-md ">No Details Page Available</div>
         )
           
       }

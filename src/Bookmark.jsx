@@ -21,12 +21,12 @@ const Bookmark = () => {
 
   return (
     <>
-      <h1 className="text-5x text-white text-center">Bookmark</h1>
-      <div className="flex flex-col items-center sm:flex-row sm:flex-wrap sm:justify-center sm:mx-auto sm:px-2 md:px-3 gap-6 w-[100%] sm:mt-24">
+      <h1 className="text-5x text-white text-center">Favorites</h1>
+      <div className="flex flex-col mt-4  items-center sm:flex-row sm:flex-wrap sm:justify-center sm:mx-auto sm:px-2 md:px-3 gap-6 w-[100%] sm:mt-24">
       {bookmarks.length > 0 ? (
         bookmarks.map((news, index) => (
           <div
-            className="max-w-[280px] sm:h-[380px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+            className="max-w-[280px] sm:h-[390px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             key={news.url ? news.url : index}
           >
             <div>

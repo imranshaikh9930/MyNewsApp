@@ -1,21 +1,18 @@
-
-import ReactPaginate from 'react-paginate';
-import { useSelector } from 'react-redux';
-// import SkipNextIcon from '@mui/icons-material/SkipNext';
-// import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import ReactPaginate from "react-paginate";
+import { useSelector } from "react-redux";
 
 // eslint-disable-next-line react/prop-types
 const Pagination = ({ setCurrentPage, pageCount }) => {
-
-  const filterArticles = useSelector((state)=>state.filteredArticles.filterArticles);
+  const filterArticles = useSelector(
+    (state) => state.filteredArticles.filterArticles
+  );
   const handlePageClick = (selectedPage) => {
-    setCurrentPage(selectedPage.selected + 1); // +1 because ReactPaginate uses 0-based indexing
+    setCurrentPage(selectedPage.selected + 1);
   };
 
   return (
     <div className="text-white w-[70%] sm:w-full mx-auto">
-    {
-      filterArticles > 0 ? (
+      {filterArticles > 0 ? (
         <ReactPaginate
           breakLabel="..."
           nextLabel=">"
@@ -38,10 +35,8 @@ const Pagination = ({ setCurrentPage, pageCount }) => {
         />
       ) : (
         <div className="text-white text-2xl text-center">No Articles Found</div>
-      )
-    }
-  </div>
-  
+      )}
+    </div>
   );
 };
 

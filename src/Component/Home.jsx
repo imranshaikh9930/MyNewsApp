@@ -30,11 +30,8 @@ const getData = useCallback(async () => {
   setLoading(true);
   
   try {
-    let api = `https://newsapi.org/v2/top-headlines?country=in&apiKey=b48b7912f12d4d7b900cc6373c06e341`;
+    let api = `https://newsapi.org/v2/top-headlines?country=in&apiKey=dd738c365945499eadb53f9b855db4e1`;
 
-    // if (searchQuery) {
-    //   api += `&q=${encodeURIComponent(searchQuery)}`;
-    // }
 
     if (category) {
       api += `&category=${encodeURIComponent(category)}`;
@@ -50,7 +47,7 @@ const getData = useCallback(async () => {
 
     setLoading(false);
     dispatch(fetchArticleSuccess(data.articles));
-    // dispatch(searchValue(""));
+
   } catch (error) {
     setLoading(false);
     dispatch(fetchArticleFailure(error.toString()));
