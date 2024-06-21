@@ -2,26 +2,28 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import image from "../assets/news.jpeg";
-import { useDispatch, useSelector } from "react-redux";
-import { setFilteredArticles } from "./redux/filterArticles";
+// import { useDispatch, useSelector } from "react-redux";
+// import { setFilteredArticles } from "./redux/filterArticles";
 import toast from "react-hot-toast";
 import Loader from "./Loader";
 import { MdOutlineSaveAlt } from "react-icons/md";
 
 const NewsCard = ({ postPerPages }) => {
-  const dispatch = useDispatch();
-  const filter = useSelector((state) => state.articleFilter.filter);
+  // const dispatch = useDispatch();
+  // const filter = useSelector((state) => state.articleFilter.filter);
 
-  if(filter){
+  // if(filter){
     
-    filter.toLowerCase();
-  }
+  //   filter.toLowerCase();
+  // }
 
   // const filteredArticles =  postPerPages.filter((article) => article.title?.toLowerCase().includes(filter));
 
   // useEffect(() => {
   //   dispatch(setFilteredArticles(filteredArticles.length));
   // }, [dispatch, filteredArticles]);
+
+  console.log(postPerPages);
 
   const handleBookmark = (index) => {
     toast.success('Favorites Added');
