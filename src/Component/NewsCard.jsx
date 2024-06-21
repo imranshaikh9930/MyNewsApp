@@ -2,28 +2,15 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import image from "../assets/news.jpeg";
-// import { useDispatch, useSelector } from "react-redux";
-// import { setFilteredArticles } from "./redux/filterArticles";
 import toast from "react-hot-toast";
 import Loader from "./Loader";
 import { MdOutlineSaveAlt } from "react-icons/md";
 
-const NewsCard = ({ postPerPages }) => {
-  // const dispatch = useDispatch();
-  // const filter = useSelector((state) => state.articleFilter.filter);
-
-  // if(filter){
-    
-  //   filter.toLowerCase();
-  // }
-
-  // const filteredArticles =  postPerPages.filter((article) => article.title?.toLowerCase().includes(filter));
-
-  // useEffect(() => {
-  //   dispatch(setFilteredArticles(filteredArticles.length));
-  // }, [dispatch, filteredArticles]);
-
-  console.log(postPerPages);
+const NewsCard = ({ postPerPages = [] }) => {
+  // Logging postPerPages to verify its content
+  useEffect(() => {
+    console.log("Post per pages: ", postPerPages);
+  }, [postPerPages]);
 
   const handleBookmark = (index) => {
     toast.success('Favorites Added');
@@ -50,7 +37,7 @@ const NewsCard = ({ postPerPages }) => {
               <img
                 className="rounded-t-lg w-full h-[150px] sm:h-[180px] object-cover"
                 src={news.urlToImage ? news.urlToImage : image}
-                alt={news.title}
+                alt={news.title ? news.title : "No Title"}
               />
             </div>
             <div className="p-5">
@@ -68,7 +55,21 @@ const NewsCard = ({ postPerPages }) => {
                   className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Read more
-                 
+                  <svg
+                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 10"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M1 5h12m0 0L9 1m4 4L9 9"
+                    />
+                  </svg>
                 </NavLink>
                 <button onClick={() => handleBookmark(index)} className="text-black text-xl">
                   <MdOutlineSaveAlt />

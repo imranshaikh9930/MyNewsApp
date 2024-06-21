@@ -32,9 +32,9 @@ const getData = useCallback(async () => {
   try {
     let api = `https://newsapi.org/v2/top-headlines?country=in&apiKey=b48b7912f12d4d7b900cc6373c06e341`;
 
-    if (searchQuery) {
-      api += `&q=${encodeURIComponent(searchQuery)}`;
-    }
+    // if (searchQuery) {
+    //   api += `&q=${encodeURIComponent(searchQuery)}`;
+    // }
 
     if (category) {
       api += `&category=${encodeURIComponent(category)}`;
