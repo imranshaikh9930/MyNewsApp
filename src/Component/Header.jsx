@@ -1,30 +1,30 @@
 import  { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { setFilter } from "./redux/filterSlice";
+// import { setFilter } from "./redux/filterSlice";
 import { FaBars, FaTimes, } from "react-icons/fa";
 const Header = () => {
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
-  const dispatch = useDispatch();
-  const filter = useSelector((state)=>state.articleFilter.filter);
+  // const dispatch = useDispatch();
+  // const filter = useSelector((state)=>state.articleFilter.filter);
   
 
-  const handleChange = (e) => {
-    dispatch(setFilter(e.target.value));
-  };
+  // const handleChange = (e) => {
+  //   dispatch(setFilter(e.target.value));
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(setFilter(e.target.value));
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(setFilter(e.target.value));
   
-  };
+  // };
 
   return (
     <header className="max-w-screen px-5 h-[13%]  relative sm:fixed sm:top-0 sm:left-0 sm:right-0 bg-black">
       <nav className="flex justify-between items-center sm:flex-row sm:justify-between sm:items-center sm:py-4 sm:px-4 text-white">
         <NavLink to={"/"} className="p-3">React News Logo</NavLink>
-        <form className={`${
+        {/* <form  onSubmit = {handleSubmit}className={`${
             !nav ? 'hidden' : 'flex'
           } sm:flex sm:items-center sm:relative sm:bg-transparent absolute top-16 sm:top-0 sm:gap-3 left-0 w-full h-screen sm:h-auto sm:w-auto bg-transparent duration-300 dark:bg-[#0a192f] flex-col sm:flex-row py-3 sm:py-0 px-5 sm:px-0`} onSubmit={handleSubmit}>
           <input
@@ -39,7 +39,7 @@ const Header = () => {
           ">
             Search
           </button>
-        </form>
+        </form> */}
 
         <div onClick={handleClick} className="md:hidden z-10">
         {!nav ? <FaBars /> : <FaTimes />}

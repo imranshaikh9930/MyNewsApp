@@ -10,13 +10,18 @@ import { MdOutlineSaveAlt } from "react-icons/md";
 
 const NewsCard = ({ postPerPages }) => {
   const dispatch = useDispatch();
-  const filter = useSelector((state) => state.articleFilter.filter).toLowerCase();
+  const filter = useSelector((state) => state.articleFilter.filter);
 
-  const filteredArticles =  postPerPages.filter((article) => article.title?.toLowerCase().includes(filter));
+  if(filter){
+    
+    filter.toLowerCase();
+  }
 
-  useEffect(() => {
-    dispatch(setFilteredArticles(filteredArticles.length));
-  }, [dispatch, filteredArticles]);
+  // const filteredArticles =  postPerPages.filter((article) => article.title?.toLowerCase().includes(filter));
+
+  // useEffect(() => {
+  //   dispatch(setFilteredArticles(filteredArticles.length));
+  // }, [dispatch, filteredArticles]);
 
   const handleBookmark = (index) => {
     toast.success('Favorites Added');
@@ -33,8 +38,8 @@ const NewsCard = ({ postPerPages }) => {
 
   return (
     <div className="flex flex-col items-center sm:flex-row sm:flex-wrap sm:justify-center sm:mx-auto sm:px-2 md:px-3 gap-6 w-full">
-      {filteredArticles.length > 0 ? (
-        filteredArticles.map((news, index) => (
+      {postPerPages.length > 0 ? (
+        postPerPages.map((news, index) => (
           <div
             className="max-w-[280px] sm:h-[380px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             key={news.url ? news.url : index}
