@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <header className="max-w-screen px-5 h-[13%]  relative sm:fixed sm:top-0 sm:left-0 sm:right-0 bg-black">
       <nav className="flex justify-between items-center sm:flex-row sm:justify-between sm:items-center sm:py-4 sm:px-4 text-white">
-        <a href="/" className="p-3">React News Logo</a>
+        <NavLink to={"/"} className="p-3">React News Logo</NavLink>
         <form className={`${
             !nav ? 'hidden' : 'flex'
           } sm:flex sm:items-center sm:relative sm:bg-transparent absolute top-16 sm:top-0 sm:gap-3 left-0 w-full h-screen sm:h-auto sm:w-auto bg-transparent duration-300 dark:bg-[#0a192f] flex-col sm:flex-row py-3 sm:py-0 px-5 sm:px-0`} onSubmit={handleSubmit}>

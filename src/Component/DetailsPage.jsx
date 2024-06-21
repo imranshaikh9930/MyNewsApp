@@ -1,8 +1,6 @@
-import React from "react";
+
 import { useParams,useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import mydata from "./data";
-import Header from "./Header";
 import image from "../assets/news.jpeg"
 import { articleDetails } from "./redux/fetchSlice";
 
@@ -19,9 +17,7 @@ const DetailsPage = () => {
 
   dispatch(articleDetails(myArticle));
   
-  // console.log(detailsPage)
-  //    const  myArticle = mydata.find((article)=>article.publishedAt === id);
-
+  
   const handleClick = (e) => {
     e.preventDefault();
     setTimeout(()=>{

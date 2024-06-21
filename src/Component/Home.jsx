@@ -66,7 +66,7 @@ const getData = useCallback(async () => {
   const handleCategory = useCallback((category) => {
     setCategory(category);
     setCurrentPage(1);
-  }, [category]);
+  }, []);
 
   return (
     <>
